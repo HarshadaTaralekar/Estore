@@ -1,0 +1,51 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link href="{% static 'asset/css/bootstrap.min.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col -md-12">
+            <a href="/home">Home Page</a>
+            </div><!--col md-12-->
+            <div class="row">
+            <div class="col-md-4 shadow mt-5 p-4 mx-auto">
+                <h2 align="center">Login</h2>
+                <form method="POST" action="/login">
+                    {% csrf_token %}
+                    {% if errmsg %}
+                    <div class="alert alert-danger">
+                        {{errmsg}}
+                    </div>
+                {% endif %}
+                    <div class="mb-3">
+                        <label for="Input1" class="form-label"><strong>User Name:</strong></label>
+                        <input type="email" name="uname" class="form-control" id="Input1" placeholder="Enter name">
+                    </div> <!--use name-->
+                    <div class="mb-3">
+                        <label for="Input2" class="form-label"><strong>password:</strong></label>
+                        <input type="password" name="upass" class="form-control" id="Input2" placeholder="Enter password">
+                    </div> <!--passord-->
+                    <!--
+                    <div class="mb-3">
+                        <label for="Input3" class="form-label"><strong>confirm Password:</strong></label>
+                        <input type="password" class="form-control" id="Input3" placeholder="Enter Password again">
+                    </div> --confirm password-->
+                    <div class="mb-3">
+                        <input type="submit" class="btn btn-danger" value="login"/>
+                        Not User?
+                        <a href="/register" style="text-decoration:none;">Register</a>
+                    </div><!--login  button-->
+                </form>
+            </div><!--col md 4end-->
+
+        </div><!--rowend-->
+
+    </div>
+    <script src="{% static 'asset/js/bootstrap.min.js' %}"></script>
+</body>
+</html>
